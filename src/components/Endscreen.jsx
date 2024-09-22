@@ -11,7 +11,7 @@ export default function Endscreen({ restartGame, percentage }) {
   }
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 text-center">
+    <div className="bg-gray-500 shadow-lg rounded-lg p-6 text-center">
       <div className="text-2xl font-semibold mb-4">Quiz Completed</div>
       <div className={`text-white text-xl py-2 px-4 rounded mb-4 ${color}`}>
         {message}

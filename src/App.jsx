@@ -32,6 +32,8 @@ export default function App() {
       return;
     }
     if (currentQuestion.correctAnswer === currentAnswer) points++;
+
+    // Ha elérte a limitet, akkor a játék véget ért
     if (limit === currentQuestionIndex + 1) {
       setIsFinished(true);
     } else {
@@ -60,7 +62,7 @@ export default function App() {
             percentage={(points / limit) * 100}
           />
         ) : (
-          <div className="bg-white shadow-lg rounded-lg p-6">
+          <div className="bg-gray-500 shadow-lg rounded-lg p-6">
             <div className="mb-4">
               <div className="text-lg font-semibold">
                 Question Category: {currentQuestion.category}
@@ -88,7 +90,7 @@ export default function App() {
                   className={`block mb-3 py-2 px-4 border rounded cursor-pointer text-center ${
                     option === currentAnswer
                       ? "bg-blue-500 text-white"
-                      : "bg-white border-blue-500"
+                      : "bg-gray-400 border-blue-500"
                   }`}
                   onClick={() => setCurrentAnswer(option)}
                 >
@@ -96,12 +98,14 @@ export default function App() {
                 </label>
               ))}
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-center sm:justify-end">
               <button
                 className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
                 onClick={() => handleNextQuestion()}
               >
-                Next Question
+                {currentQuestionIndex + 1 === limit
+                  ? "Quiz Result"
+                  : "Next Question"}
               </button>
             </div>
           </div>
